@@ -1,0 +1,15 @@
+After related work
+Problem definition
+what is comparable - what does it mean to be comparable
+define concepts
+
+evaluation
+works really on certain types of restaurants etc
+i.e. 4sq checkins are more correlated with bars than chinese restaurants
+ordering by user reviews, checkins, mentions raw
+   correlated with any category of establishment
+
+   non-parametric statistical significance test
+   non-parametric t-test
+   http://www.cs.columbia.edu/~hila/papers/wsdm10-becker.pdf
+   Friedman's test

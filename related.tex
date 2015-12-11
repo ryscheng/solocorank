@@ -1,0 +1,86 @@
+ \section{Related Work}
+\label{sec:related}
+The rise of social media on the Internet and its impact has been extensively studied.
+Social media provides unique insights into real-world behaviors and opinions.
+Studies have shown that users are increasingly relying on social media
+in vacation planning and social media takes up a growing part of Web search results \cite{xiang2010}.
+Likewise, websites that can leverage social media to recommend restaurants
+have been shown to hold real economic power.
+For example, it has been shown that a one-star increase in Yelp ratings
+leads to a 5-9\% increase in revenue in the state of Washington \cite{luca2011reviews}.
+
+There has been extensive study into extracting information from user-generated reviews.
+Natural language processing techniques, such as sentiment analysis, 
+can be used to extract favorability from raw text \cite{dave2003,nasukawa2003}.
+These techniques have been applied to reviews to produce stronger models 
+of consumer opinion \cite{carrillo2011,shamshurin,morinaga2002}.
+Sentiment analysis models have grown to become very sophisticated, using machine learning
+techniques to model cross-sentence context \cite{Pang:2004:SES:1218955.1218990}.
+
+Ganu et al found that by using sentiment analysis on raw review text,
+they can generate higher quality scores for use in recommendation systems,
+when compared to systems that just used star ratings \cite{ganu2009}.
+\emph{SolocoRank} does not incorporate any signals generated from raw review text.
+Instead, we use a variety of signals derived from aggregated counts of rating stars
+as described in Section \ref{sec:features}.
+In the future, sentiment analysis techniques can be used to strengthen the
+\emph{SolocoRank} model, improving on our results. 
+
+Lala et al also investigated the use of social media to improve
+restaurant recommendations \cite{lalamine}.
+Their system collects an individual user's rating of select restaurants.
+Then, item-based collaborative filtering is used on review text 
+to find personalized recommendations for that particular user \cite{sarwar2001}.
+\emph{SolocoRank} aims to provide a more general framework for predicting 
+review scores, incorporating new forms of social media such as check-ins.
+
+Kawamae also used collaborative filtering techniques on reviews,
+but in order to predict future reviews from a particular review author \cite{kawamae2011}.
+He used latent evaluation topic models to differentiate an author's preference.
+These models tracked the variety of words that distinguish the author's
+attitude, which can then be used to find other like-minded reviewers.
+
+Social media has also been used to generate quality scores in search engines.
+SocialPageRank \cite{bao2007} calculates the popularity of webpages using
+social annotations from websites like Del.icio.us.
+They found that high quality webpages are generally bookmarked by
+up-to-date users, using hot annotations.
+Their algorithm calculcates a quality signal from these social annotations,
+boosting the performance of their search engine.
+
+\emph{SolocoRank} is largely inspired by various systems that have been proposed to use
+social media and other Web signals to improve the ranking quality of a search engine \cite{ganu2009,bao2007,xiang2010}.
+However, there are significant differences.
+Studies have shown that on their own, these Web signals offer only limited understanding into
+the quality of an establishment.
+For example, studies have shown that click-through data is not reliable for obtaining
+absolute relevance judgements \cite{jain:imagereranking}.
+Rather than using any particular Web signal directly, \emph{SolocoRank} trains a model that aims to
+accurately predict the editorial rating of an establishment, using a variety of different
+data sources at our disposal.
+
+Machine learning has become a popular mechanism for generating
+quality scores for search engine ranking \cite{boyan,burges2005}.
+Richardson et al used machine learning to rank
+webpages that use features beyond the link-structure
+of the Web \cite{richardson2006,amento2000}.
+This work was shown to outperform PageRank \cite{pagerank} in 
+Web search quality.
+
+Query-independent signals have been studied as effective mechanisms to 
+improve ranking in the context of webpages \cite{upstill2003}.
+Craswell et al introduced mechanisms to transform query-independent
+signals into effective features for learn-to-rank systems \cite{craswell2005}.
+Dalvi et al introduced adversarial classification, which allows
+a system to achieve robust performance, even when adversaries try to game
+the system \cite{dalvi2004}.
+\emph{SolocoRank} draws much inspiration from the existing learn-to-rank literature,
+and applies them to a new space~\cite{boyan,burges2005,richardson2006,amento2000,craswell2005,upstill2003,cao2007learning,radlinski2005query,liu2007letor,xia2008listwise,duan2010empirical,agarwal2006learning,kulis2006learning}.
+
+Geographic search engines use a variety of mechanisms to recommend places.
+Kato et al proposed an alternative user interface.
+By selecting places in the user's hometown that they like,
+the system uses various distance metrics to find similar places at the
+user's current location \cite{kato:geosearch}.
+
+

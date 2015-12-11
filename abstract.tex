@@ -1,0 +1,29 @@
+\begin{abstract}
+User-contributed Web data contains rich information about
+the physical establishments in the real-world, such as restaurants and hotels.
+Our goal is to leverage this growing source of data on the Web
+in order to improve the quality of restaurant recommendations from local search engines.
+We do so by generating a query-independent score of quality for all establishments in the US.
+Search engines that rely purely on raw user-generated reviews suffer from three major limitations.
+First, the same top places are reinforced at the head of results, causing bias towards places
+that were introduced first. 
+Second, user-generated review scores offer very little insight into the establishment's quality.
+Scores are limited to fairly coarse resolution, such as discrete values from 0 to 5,
+and research has shown that scores tend to be biased towards high scores.
+Lastly, user-generated reviews are notoriously noisy, as each person may hold very different
+standards in what the value of each star means.
+User-generated reviews alone act as a weak signal for indicating the quality of an establishment,
+and search engines that use them naively can lead to poor results.
+Instead, we demonstrate that many of these problems can be mitigated
+by leveraging editorial review services, such as Zagat.
+
+We built a new learn-to-rank system, named \emph{SolocoRank}, trained on
+scores from editorial review services to more accurately rank all establishments.
+\emph{SolocoRank} leverages a variety of signals on the Web, including 
+new social media data sources such as check-ins and microblogs.
+Our approach has shown to accurately predict editorial review scores.
+When trained on Zagat scores, we show that \emph{SolocoRank} exhibits significant performance
+gains in ranking establishments, even for the long-tail
+of lower quality establishments.
+
+\end{abstract}

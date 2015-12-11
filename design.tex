@@ -1,0 +1,111 @@
+\section{Quality Classification Using \\Social Media}
+\label{sec:design}
+\subsection{Overview}
+
+\emph{SolocoRank} leverages a variety of data sources
+to predict the editorial score of an establishment.
+This score can then be used to rank establishments in a recommendation engine
+or search engine.
+Our goal is to create a query-independent score to improve performance
+across a variety of different restaurant categories.
+Our goal is not to produce any application-specific results or model
+an individual's preferences to improve their search results.
+
+Our hypothesis is that editorial reviews can be used to more accurately
+order the quality of restaurant recommendations.
+We calculate a \emph{SolocoRank} for each restaurant and bar in the United States,
+which can be used as an additional signal for applications such as
+recommendation engines and search engines.
+
+That is not to say that \emph{SolocoRank} is an accurate representation of
+the absolute real-world quality of an establishment.
+In other words, the score generated is not meant to be displayed to the user.
+\emph{SolocoRank} is also not meant to be used for a global ordering of all
+restaurants. 
+Instead, we evaluate the ability for \emph{SolocoRank} to accurately relatively
+order restaurants within comparable categories of restaurants,
+As mentioned in Section \ref{sec:setup}, comparable categories represent
+restaurants with similar types of food in similar price ranges.
+
+Our algorithm works as follows. 
+We collect a list of all restaurants and bars in the United States that have
+editorial scores.
+We then aggregate a number of data sources (e.g. Google Maps, Google Plus,
+Google Latitude, Web index).
+In this aggregation phase, we count review statistics, and check-in statistics
+for all restaurants.
+We also use an entity annotator on all microblog posts (e.g. Google Plus, Twitter), and then
+count statistics on how often restaurants are mentioned.
+These results are then joined as features to the list of editorial-reviewed places.
+We then train a classifier, using the discrete editorial score as labels.
+Although regression could also be used, we were able to achieve better performance
+using classifiers, as we demonstrate in Section \ref{sec:evaluation}.
+
+We could have also bucketed editorial scores into fewer labels to improve
+classifier accuracy, we found that less score-resolution actually hurt our
+ability to order.
+Thus, we attempt to just predict the exact editorial score of a restaurant
+and use this score to order even restaurants that were never reviewed by 
+the editorial organization.
+
+There exist a number of key technical challenges to \emph{SolocoRank}.
+Firstly, the features that we rely on are rather sparse.
+While there were places with a very large number of reviews, 
+most of the places we encountered had only a handful of reviews.
+Features also had a strong location dependence.
+In a high-tech hub of food culture like New York City,
+far more places had user check-ins,
+when compared to rural towns.
+Furthermore, our training data of editorial-reviewed places
+tended to be the types of places that had very strong signals, such as high review count.
+Generalizing our model to work on any restaurant in the US proved to be a difficult task.
+While we wanted to avoid overfitting, at the same time, our model needed to include
+a vast amount of complex relationships.
+
+Our proposed solution uses supervised learning.
+We used the MapReduce \cite{mapreduce} framework to aggregate our large data sources
+and train models in parallel. 
+Due to the size of the data in question, it was important that our process was
+fully automatic. 
+Human relevance judgements were only used for generating our evaluation test sets.
+
+\subsection{Features}
+\label{sec:features}
+We gather the following four types of features for each establishment
+in the United States:
+\squishlist
+	\item \textbf{User reviews}\\
+  We collect review counts and scores for all places registered in Google Maps.
+  These include reviews from Google Maps core and Zagat.com user reviews.
+  Just for the purposes of this paper evaluation, we also crawl a limited number of Yelp pages for their reviews.
+  We also decompose these counts into additional features.
+  For example, we count the number of users that gave the restaurant each particular rating.
+	\item \textbf{Mentions}\\
+  We use an entity annotator to detect restaurant names in arbitrary webpages.
+  Using this, we can count the number of times the restaurant has been mentioned on the Web,
+  as well as how many times it has been mentioned in Google Plus posts.
+  Just for the purposes of this paper evaluation, we also crawl a limited number of popular Twitter pages.
+	\item \textbf{Check-ins}\\
+  We gather check-in data from Google Latitude.
+  Just for the purposes of this paper evaluation, we also crawl a limited number
+  of popular Foursquare pages for check-in counts.
+  \item \textbf{Google Maps}\\
+  As mentioned earlier, many of the aforementioned signals are location dependent.
+  We encode the location as a feature, as well as any additional attributes that are
+  stored in the Google Maps repository.
+  This includes for example, the Pagerank of the associated webpage.
+  It also contains a count of the number of photos and videos associated with a place.
+\squishend
+
+\subsection{Classifiers}
+Because SolocoRank is a general machine learning-based framework,
+we have the option of choosing from a variety of different classifiers.
+Depending on what data sources are used and how features are encoded,
+different classifiers may hold specific advantages.
+Similarly, parameter-tuning may vary depending on the data.
+
+In our implementation, we offer linear classifiers (e.g. Perceptron, Winnow),
+decision trees (e.g. CART), ensemble classifiers (e.g. AdaBoost, TreeBoost, Random Forests),
+and logistic regression.
+In Section \ref{sec:classifierperformance}, we evaluate the accuracy and error
+of each model for our data set.

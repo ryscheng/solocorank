@@ -1,0 +1,88 @@
+\vspace{0.1in}
+\section{Introduction}
+\label{sec:introduction}
+
+Ranking physical establishments, such as restaurants and bars, is a problem
+of significant commerical importance.
+An understanding of an establishment's quality has wide applicability in improving
+local search, recommendation systems, and mapping software.
+However, broadly quantifying establishment quality at scale is a particularly difficult
+research problem at the heart of geographical information retrieval, machine learning, and
+natural language processing.
+
+Questions such as: "Where is the best pizza in New York City?" can only be answered by humans.
+Humans evaluate establishments in ways that machines could never achieve.
+They can taste the foods, experience the environment, and reflect on the service.
+If a mapping service were equipped with this type of information for all restaurants,
+it would be able to offer much higher quality results when users search for "pizza" or
+other similarly generic terms.
+
+Obtaining quality judgements for all physical establishments is a challenging problem,
+First of all, there are many complicated facets to determining the quality of a place.
+For example, one may judge an establishment on quality of service, decor,
+ambiance, hygiene, and food.
+Tackling the problem at scale is also particularly difficult.
+In addition to the many establishments that exist, new establishments are
+being opened around the world constantly.
+In order to leverage this type of information for local search results,
+an enormous amount of data must be collected on all relevant establishments in order to 
+achieve an acceptable level of confidence in the ranking.
+Lastly, these various data sources must be distilled in a way to be able to compare
+two establishments.
+For example, if one restaurant as 100 check-ins and a 3-star rating and
+another restaurant has 10 check-ins and a 4-star rating, which is better?
+
+Traditionally, this task has been accomplished by crowdsourcing.
+There exist a variety of websites (e.g. Google Maps, Yelp, TripAdvisor)
+that allow users to review and rate their previous experiences at an establishment.
+Recommendation engines then may rely on a particular signal such as total check-in count
+to use for recommending places for you to go.
+In some cases, these services may use a simple heuristic amongst various data sources
+such as average rating and review count.
+Unfortunately, any individual signal tends to be a very noisy and a generally sparse data set,
+over the set of all establishments.
+Crowdsourced data also tends to be largely a function of current consumer behaviors and technology.
+Location check-in services experienced incredible growth in the recent few years.
+However, this growth was disproportionate depending on the location
+and type of establishments.
+Thus, extracting what these signals mean in terms of quality and popularity can a highly
+complex problem, with many interdependencies between signals.
+
+While new forms of social media data presents challenges for recommendation engines,
+they also exhibit exciting opportunities for gaining rich insights into consumer behavior.
+This data includes user-generated content (e.g. reviews, check-ins),
+as well as automatically generated content (e.g. check-in time).
+Users are expressing their satisfaction and dissatisfaction of places in
+ever-growing ways on the Internet.
+While any individual signal may be noisy and unreliable, the collective group
+of all different types of social media provides revealing information
+into consumer opinions.
+
+In this paper, we exploit this rich space of features with \emph{SolocoRank},
+a query-independent prediction of quality.
+\emph{SolocoRank} is a machine learning model trained on a number of Web-based signals,
+including a number of new forms of social media.
+In addition to traditional signals such as the establishment website's PageRank \cite{pagerank},
+we also incorporate features derived from reviews, location check-in data,
+mentions on micro-blog posts, and photo/video counts of a place.
+This model is then used to classify all establishments in the United States along a 0-30 scale.
+The \emph{SolocoRank} of a place does not depend on the intended search query,
+but could be used to help determine the ultimate ordering of search results.
+Many different signals may be used to determine the relevance 
+of each search result \cite{bartell1994}, one of which may be \emph{SolocoRank}.
+
+The contributions of this paper as follows:
+\squishlist
+  \item We pose the problem of producing a score of quality
+  as a machine learning task, where each place has features
+  derived from various crowdsourced social media data sources 
+  (Section \ref{sec:setup}).
+  \item We propose a general classification framework,
+  suitable for learning establishment quality scores
+  from social media (Section \ref{sec:design}).
+  \item We evaluate our proposed classification framework
+  on real data from a variety of real-world web services
+  (Section \ref{sec:evaluation}).
+\squishend
+We conclude with a discussion of the implications of our findings and 
+directions for future work in Sections \ref{sec:discussion} and \ref{sec:conclusion}.

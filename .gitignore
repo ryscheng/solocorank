@@ -1,0 +1,17 @@
+### TeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.lof
+*.toc
+*~
+*.texshop
+
+### Mac OS X
+.DS_Store
+.*.swp
+
+### Generated
+paper.pdf
