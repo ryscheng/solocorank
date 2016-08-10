@@ -1,0 +1,89 @@
+Dear Raymond Cheng:
+
+We regret to inform you that your submission number 702 titled
+
+SolocoRank: Using Social Signals for Local Place Quality
+
+has not been accepted in the Research program at WWW 2014.   (The acceptance rate was 12.9% -
+- 84 papers out of 650 submissions)
+
+Nevertheless, we wish to thank for your interest in WWW2014 and hope that the enclosed
+comments will help you improve your work.   If appropriate you might consider resubmitting it as
+a poster to WWW (deadline January 5) or to one of the many workshops that will take place at
+WWW (deadline January 14).    In any case, we hope that you will join us in Seoul:  the registration
+is now open at    http://www2014.kr/registration/ (early bird deadline February 17, 2014).
+
+Thank you again, best wishes for the holidays, and a Happy New Year!  -- Andrei, Kyuseok,
+Torsten
+
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 702
+TITLE: SolocoRank: Using Social Signals for Local Place Quality
+AUTHORS: Raymond Cheng, Michael Schueppert, Hila Becker and Mayur Thakur
+
+OVERALL EVALUATION: -4 (should reject)
+REVIEWER'S CONFIDENCE: 4 (high)
+This is the best paper among the papers I reviewed: 2 (No)
+
+----------- REVIEW -----------
+The paper pointed out three problems caused by user-generated reviews for restaurant recommendations. The problems are (1)reinforcement of popular places, (2) low resolution of rating and (3) noisy in the reviews. Social medial like Zagat web services is used to generate features for every restaurant and a general classification framework is trained to predict the ranking.
+
+The paper is clearly clarified and well organized. However, there are several defects in this paper.
+(1) The technique by applying classifier to predict the rankings is quite straightforwards. The author didn't develop their suitable and innovative method to train the classifier that can effectively solve the above three problems. Namely, formating a practical problem into a classification problem is a general solution in the field of Machine Learning. Hence the solution in this paper is lack of novelty.
+
+(2) In the experiment part, several classifiers are tested in this framework. However, the selection of parameters in these classifiers is not well clarified. Cross validation should be performed to have a fair comparison. In Figure 6, although PlaceRank, SolocoRank, and PlaceRank*SolocoRank outperform User Reviews, it seems that the performance is slightly better than that of User Reviews. Hence the proposed method increase the complexity to tackle the social signal information with just a little gains.
+
+(3) In 5.2.2, just three raters are involved in the test set, which is less convincing to derive further reasonable results.
+
+(4) Noisy always exists in the collected data. So does the editorial review. Hence the proposed framework doesn't essentially solve the noisy problem by adjusting the classifier in this specific application.
+
+(5) There are some typing errors in the paper. In page 2, " extracting what these signals mean in terms of quality and popularity can a hightly....". In this sentence, "be" is missing after "can". In Figure 5, the last value in the x axis should be 100 instead of 10. Figure 2,3,7,8 take up too much space.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 702
+TITLE: SolocoRank: Using Social Signals for Local Place Quality
+AUTHORS: Raymond Cheng, Michael Schueppert, Hila Becker and Mayur Thakur
+
+OVERALL EVALUATION: -4 (should reject)
+REVIEWER'S CONFIDENCE: 4 (high)
+This is the best paper among the papers I reviewed: 2 (No)
+Recommend this paper as a poster: 2 (No)
+
+----------- REVIEW -----------
+This paper presents SolocoRank, which leverages a variety of signals on the Web, including new social media data sources such as check-ins and microblogs in order to more accurately rank all establishments of different locations (restaurants and hotels). It combines different sources of information from different sources into a classification/regression framework.
+
+The problem under consideration is interesting and also important for a lot of online rating system. However, I do have several concerns as follows.
+
+First, the paper is not well presented. The authors claims to propose SolocoRank system, but the reviewer cannot see how the system works: what’s new algorithms are applied? It seems this paper just applied some classical algorithms for a new problem. In presenting the features used to train the model, detailed feature descriptions are also missing. As a result, the review cannot see clear technical novelty and contributions of this paper.
+
+Second, this paper lacks technical novelty.  Though the authors first present several challenges to accurately rank all establishments, and also analyze some potential information sources could be applied to improve the ranking system. But no novel technical such as ranking algorithms are presented. In evaluation, the authors just mention applying some classical classification/regression algorithms for the problem.
+
+Third, the evaluation is not very convincing. For the first part, it just compares the performances of some classical classifier algorithms.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 702
+TITLE: SolocoRank: Using Social Signals for Local Place Quality
+AUTHORS: Raymond Cheng, Michael Schueppert, Hila Becker and Mayur Thakur
+
+OVERALL EVALUATION: -2 (marginal)
+REVIEWER'S CONFIDENCE: 3 (medium)
+This is the best paper among the papers I reviewed: 2 (No)
+Recommend this paper as a poster: 1 (Yes)
+
+----------- REVIEW -----------
+This paper proposes a supervised learning method called SolocoRank to predict the editorial review scores of restaurants. The main novelty of SolocoRank is the use of multiple sources of features foursquare check-ins and twitter data.
+
+From the technical standpoint, it is difficult to identify the scientific contribution of the SolocoRank technique as it is a classifier trained using some labeled data. The use of multiple data sources is interesting but should not be a selling point as such data may also introduce more noise.
+
+In Section 5, the different classification methods are compared.  I wonder why SVM was not used.  Furthermore, as a learning to rank method, I thought SVMrank should be used.
+The paper does not clearly state how is SolocoRank different from standard classification methods.
+
+I also find the experiment setup for getting annotators to label restaurants is also not well described/justified.  Why don't we just use Zagat scores?  I have the impression that Zagat scores are already used as ground truths.
+
+
+-------------------------  METAREVIEW  ------------------------
+
+There is no metareview for this paper
